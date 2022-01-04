@@ -44,7 +44,7 @@
 
     <div class="overlay">
       <div
-        style="flex: 1; display: flex"
+        style="flex: 1; display: flex; align-items: center"
         class="space-x-0 lg:space-x-4 flex-col lg:flex-row"
       >
         <query-card class="search overlay-child" @open="showNodes"></query-card>
@@ -57,32 +57,49 @@
       </div>
       <!-- <div style="flex: 1"></div> -->
 
-      <b-button
-        v-if="showEditTools"
-        class="clear-button overlay-child"
-        type="is-text"
-        @click="createStudy"
-      >
-        Add Study
-      </b-button>
+      <!-- Arrange buttons in rows -->
+      <b-row>
+        <b-button
+          v-if="showEditTools"
+          class="clear-button overlay-child"
+          type="is-text"
+          @click="createStudy"
+        >
+          Add Study
+        </b-button>
 
-      <b-button
-        v-if="showEditTools"
-        class="clear-button overlay-child"
-        type="is-text"
-        @click="addNode"
-      >
-        Add Node
-      </b-button>
+        <b-button
+          v-if="showEditTools"
+          class="clear-button overlay-child"
+          type="is-text"
+          @click="addNode"
+        >
+          Add Node
+        </b-button>
+      </b-row>
+        
+      <b-row>
+        <b-button
+          v-if="showEditTools"
+          class="clear-button overlay-child"
+          type="is-text"
+          @click="stopEdit"
+        >
+          Exit
+        </b-button>
 
-      <b-button
-        v-if="showEditTools"
-        class="clear-button overlay-child"
-        type="is-text"
-        @click="stopEdit"
-      >
-        Exit
-      </b-button>
+        <!-- Add provenance pattern (dropdown button) -->
+        <b-select name="AddPattern" v-if="showEditTools" @input="addPattern" expanded v-model="selectedPattern" class="clear-button overlay-child">
+          <option value="" disabled selected>Add Pattern</option>
+          <option value="Creating Simulation Model">Creating Simulation Model</option>
+          <option value="Refining Simulation Model">Refining Simulation Model</option>
+          <option value="Re-Implementing Simulation Model">Re-Implementing Simulation Model</option>
+          <option value="Composing Simulation Model">Composing Simulation Model</option>
+          <option value="Calibrating Simulation Model">Calibrating Simulation Model</option>
+          <option value="Validating Simulation Model">Validating Simulation Model</option>
+          <option value="Analyzing Simulation Model">Analyzing Simulation Model</option>
+        </b-select>
+      </b-row>
 
       <div class="cards overlay-child">
         <prov-legend-card v-bind="legendProps"></prov-legend-card>
@@ -157,6 +174,7 @@ import {
   uniqueId,
   tuple,
   TypeOf,
+  RelationshipTypeUnion,
 } from 'common';
 import ProvLegendCard from '@/components/ProvLegendCard.vue';
 import InformationModal from '@/components/InformationModal.vue';
@@ -210,6 +228,7 @@ import {
 } from '@vue/composition-api';
 import Fab, { FabAction } from '@/components/Fab.vue';
 import { useRules, useDefinitions } from '@/hooks';
+import { values } from 'd3-collection';
 
 interface BaseNode extends D3Node {
   studyId?: string;
@@ -258,6 +277,11 @@ export default createComponent({
   props: {
     windowHeight: { type: Number, required: true },
     windowWidth: { type: Number, required: true },
+  },
+  data() {
+    return {
+      selectedPattern: '', // After opening the application/editor tools, initiaze the pattern selection
+    };
   },
   setup(props, context) {
     const {
@@ -783,6 +807,7 @@ export default createComponent({
     const searchItems = computed(() => {
       return highLevelNodes.value.map((n): SearchItem => {
         const fields = getInformationNodesFromProvenance(n.node);
+        // tslint:disable-next-line:no-shadowed-variable
         const values = fields
           .filter(isDefined)
           .map((field) => field.value)
@@ -1152,7 +1177,14 @@ export default createComponent({
       links.value = newLinks;
     }
 
+    // Add node without pattern (default entity type = research question)
     async function addNode() {
+      addNodeType(definitions.value[0].id);
+    }
+
+    // Create different node types for patterns
+    // Otherwise definitions.value[0].id
+    async function addNodeType(nodeType: string) {
       if (definitions.value.length === 0) {
         context.root.$notification.open({
           message: 'No definitions found. Unable to create new node.',
@@ -1164,7 +1196,7 @@ export default createComponent({
 
       const node: ProvenanceNode = {
         id: uniqueId(),
-        definitionId: definitions.value[0].id,
+        definitionId: nodeType,
         studyId: selectedStudy.value ? selectedStudy.value.id : undefined,
       };
 
@@ -1178,6 +1210,340 @@ export default createComponent({
 
       nodesToShow.value[node.id] = true;
       renderGraph();
+      return node;
+    }
+
+    // Pattern create relationship
+    async function addRelationship(sourceNode: ProvenanceNode, targetNode: ProvenanceNode,
+                                   relationshipType: DependencyType) {
+
+      const connection = createRelationship(sourceNode, targetNode, relationshipType);
+      if (!connection.can) {
+        return;
+      }
+
+      const result = await makeRequest(() =>
+        backend.updateOrCreateDependency(connection.connection),
+      );
+      if (result.result !== 'success') {
+        return;
+      }
+
+      dependencies.value.push(connection.connection);
+      renderGraph();
+    }
+
+    // Add pattern (create multiple nodes and relationships with default information)
+    async function addPattern(value: string) {
+      if (value === 'Creating Simulation Model') {
+        addCreatingPattern();
+      } else if (value === 'Refining Simulation Model') {
+        addRefiningPattern();
+      } else if (value === 'Re-Implementing Simulation Model') {
+        addReimplementingPattern();
+      } else if (value === 'Composing Simulation Model') {
+        addComposingPattern();
+      } else if (value === 'Calibrating Simulation Model') {
+        addCalibratingPattern();
+      } else if (value === 'Validating Simulation Model') {
+        addValidatingPattern();
+      } else if (value === 'Analyzing Simulation Model') {
+        addAnalyzingPattern();
+      }
+      // TODO Reset pattern selector
+      // this.selectedPattern = '';
+      return;
+    }
+
+      // addNodeType(definitions.value[0].id); // Research Question
+      // addNodeType(definitions.value[1].id); // Assumption
+      // addNodeType(definitions.value[2].id); // Requirement
+      // addNodeType(definitions.value[3].id); // Qualitative Model
+      // addNodeType(definitions.value[4].id); // Simulation Model
+      // addNodeType(definitions.value[5].id); // Simulation Experiment
+      // addNodeType(definitions.value[6].id); // Simulation Data
+      // addNodeType(definitions.value[7].id); // Wet-lab Data
+      // addNodeType(definitions.value[8].id); // Building Simulation Model
+      // addNodeType(definitions.value[9].id); // Calibrating Simulation Model
+      // addNodeType(definitions.value[10].id); // Validating Simulation Model
+      // addNodeType(definitions.value[11].id); // Analyzing Simulation Model
+
+    async function addCreatingPattern() {
+      // Activity
+      const bsm = await addNodeType(definitions.value[8].id); // Building Simulation Model
+      if (bsm === undefined) { return; }
+
+      // In-nodes
+      const rq = await addNodeType(definitions.value[0].id); // Research Question
+      if (rq === undefined) { return; }
+
+      const a = await addNodeType(definitions.value[1].id); // Assumption
+      if (a === undefined) { return; }
+
+      const r = await addNodeType(definitions.value[2].id); // Requirement
+      if (r === undefined) { return; }
+
+      const qm = await addNodeType(definitions.value[3].id); // Qualitative Model
+      if (qm === undefined) { return; }
+
+      const wd = await addNodeType(definitions.value[7].id); // Wet-lab Data
+      if (wd === undefined) { return; }
+
+      // Out-nodes
+      const sm = await addNodeType(definitions.value[4].id); // Simulation Model
+      if (sm === undefined) { return; }
+
+      // Relationships
+      addRelationship(bsm, rq, 'Used');
+      addRelationship(bsm, a, 'Used');
+      addRelationship(bsm, r, 'Used');
+      addRelationship(bsm, qm, 'Used');
+      addRelationship(bsm, wd, 'Used');
+      //
+      addRelationship(sm, bsm, 'Generated by');
+
+      return;
+    }
+
+    async function addRefiningPattern() {
+      // Activity
+      const bsm = await addNodeType(definitions.value[8].id); // Building Simulation Model
+      if (bsm === undefined) { return; }
+
+      // In-nodes
+      const rq = await addNodeType(definitions.value[0].id); // Research Question
+      if (rq === undefined) { return; }
+
+      const a = await addNodeType(definitions.value[1].id); // Assumption
+      if (a === undefined) { return; }
+
+      const r = await addNodeType(definitions.value[2].id); // Requirement
+      if (r === undefined) { return; }
+
+      const qm = await addNodeType(definitions.value[3].id); // Qualitative Model
+      if (qm === undefined) { return; }
+
+      const wd = await addNodeType(definitions.value[7].id); // Wet-lab Data
+      if (wd === undefined) { return; }
+
+      const sm1 = await addNodeType(definitions.value[4].id); // Simulation Model
+      if (sm1 === undefined) { return; }
+
+      // Out-nodes
+      const sm2 = await addNodeType(definitions.value[4].id); // Simulation Model
+      if (sm2 === undefined) { return; }
+
+      // Relationships
+      addRelationship(bsm, rq, 'Used');
+      addRelationship(bsm, a, 'Used');
+      addRelationship(bsm, r, 'Used');
+      addRelationship(bsm, qm, 'Used');
+      addRelationship(bsm, wd, 'Used');
+      addRelationship(bsm, sm1, 'Used');
+      //
+      addRelationship(sm2, bsm, 'Generated by');
+      //
+      return;
+    }
+
+    async function addReimplementingPattern() {
+      // Activity
+      const bsm = await addNodeType(definitions.value[8].id); // Building Simulation Model
+      if (bsm === undefined) { return; }
+
+      // In-nodes
+      const sm1 = await addNodeType(definitions.value[4].id); // Simulation Model
+      if (sm1 === undefined) { return; }
+
+      // Out-nodes
+      const sm2 = await addNodeType(definitions.value[4].id); // Simulation Model
+      if (sm2 === undefined) { return; }
+
+      // Relationships
+      addRelationship(bsm, sm1, 'Used');
+      //
+      addRelationship(sm2, bsm, 'Generated by');
+      //
+      return;
+    }
+
+    async function addComposingPattern() {
+      // Activity
+      const bsm = await addNodeType(definitions.value[8].id); // Building Simulation Model
+      if (bsm === undefined) { return; }
+
+      // In-nodes
+      const rq = await addNodeType(definitions.value[0].id); // Research Question
+      if (rq === undefined) { return; }
+
+      const a = await addNodeType(definitions.value[1].id); // Assumption
+      if (a === undefined) { return; }
+
+      const r = await addNodeType(definitions.value[2].id); // Requirement
+      if (r === undefined) { return; }
+
+      const qm = await addNodeType(definitions.value[3].id); // Qualitative Model
+      if (qm === undefined) { return; }
+
+      const wd = await addNodeType(definitions.value[7].id); // Wet-lab Data
+      if (wd === undefined) { return; }
+
+      const sm1 = await addNodeType(definitions.value[4].id); // Simulation Model
+      if (sm1 === undefined) { return; }
+
+      const sm2 = await addNodeType(definitions.value[4].id); // Simulation Model
+      if (sm2 === undefined) { return; }
+
+      // Out-nodes
+      const sm3 = await addNodeType(definitions.value[4].id); // Simulation Model
+      if (sm3 === undefined) { return; }
+
+      // Relationships
+      addRelationship(bsm, rq, 'Used');
+      addRelationship(bsm, a, 'Used');
+      addRelationship(bsm, r, 'Used');
+      addRelationship(bsm, qm, 'Used');
+      addRelationship(bsm, wd, 'Used');
+      addRelationship(bsm, sm1, 'Used');
+      addRelationship(bsm, sm2, 'Used');
+      //
+      addRelationship(sm3, bsm, 'Generated by');
+      //
+      return;
+    }
+
+    async function addCalibratingPattern() {
+      // Activity
+      const csm = await addNodeType(definitions.value[9].id); // Calibrating Simulation Model
+      if (csm === undefined) { return; }
+
+      // In-nodes
+      // const rq = await addNodeType(definitions.value[0].id); // Research Question
+      const a = await addNodeType(definitions.value[1].id); // Assumption
+      if (a === undefined) { return; }
+
+      const r = await addNodeType(definitions.value[2].id); // Requirement
+      if (r === undefined) { return; }
+
+      // const qm = await addNodeType(definitions.value[3].id); // Qualitative Model
+
+      const wd = await addNodeType(definitions.value[7].id); // Wet-lab Data
+      if (wd === undefined) { return; }
+
+      const sm1 = await addNodeType(definitions.value[4].id); // Simulation Model
+      if (sm1 === undefined) { return; }
+
+      // Out-nodes
+      const sm2 = await addNodeType(definitions.value[4].id); // Simulation Model
+      if (sm2 === undefined) { return; }
+
+      const se = await addNodeType(definitions.value[5].id); // Simulation Experiment
+      if (se === undefined) { return; }
+
+      const sd = await addNodeType(definitions.value[6].id); // Simulation Data
+      if (sd === undefined) { return; }
+
+      // Relationships
+      // addRelationship(csm, rq, 'Used');
+      addRelationship(csm, a, 'Used');
+      addRelationship(csm, r, 'Used');
+      // addRelationship(csm, qm, 'Used');
+      addRelationship(csm, wd, 'Used');
+      addRelationship(csm, sm1, 'Used');
+      //
+      addRelationship(sm2, csm, 'Generated by');
+      addRelationship(se, csm, 'Generated by');
+      addRelationship(sd, csm, 'Generated by');
+      //
+      return;
+    }
+
+    async function addValidatingPattern() {
+      // Activity
+      const vsm = await addNodeType(definitions.value[10].id); // Validating Simulation Model
+      if (vsm === undefined) { return; }
+
+      // In-nodes
+      // const rq = await addNodeType(definitions.value[0].id); // Research Question
+
+      const a = await addNodeType(definitions.value[1].id); // Assumption
+      if (a === undefined) { return; }
+
+      const r = await addNodeType(definitions.value[2].id); // Requirement
+      if (r === undefined) { return; }
+
+      // const qm = await addNodeType(definitions.value[3].id); // Qualitative Model
+
+      const wd = await addNodeType(definitions.value[7].id); // Wet-lab Data
+      if (wd === undefined) { return; }
+
+      const sm1 = await addNodeType(definitions.value[4].id); // Simulation Model
+      if (sm1 === undefined) { return; }
+
+      // Out-nodes
+      const se = await addNodeType(definitions.value[5].id); // Simulation Experiment
+      if (se === undefined) { return; }
+
+      const sd = await addNodeType(definitions.value[6].id); // Simulation Data
+      if (sd === undefined) { return; }
+
+      // Relationships
+      // addRelationship(vsm, rq, 'Used');
+      addRelationship(vsm, a, 'Used');
+      addRelationship(vsm, r, 'Used');
+      // addRelationship(vsm, qm, 'Used');
+      addRelationship(vsm, wd, 'Used');
+      addRelationship(vsm, sm1, 'Used');
+      //
+      addRelationship(se, vsm, 'Generated by');
+      addRelationship(sd, vsm, 'Generated by');
+      //
+      return;
+    }
+
+    async function addAnalyzingPattern() {
+      // Activity
+      const asm = await addNodeType(definitions.value[11].id); // Analyzing Simulation Model
+      if (asm === undefined) { return; }
+
+      // In-nodes
+      // const rq = await addNodeType(definitions.value[0].id); // Research Question
+      const a = await addNodeType(definitions.value[1].id); // Assumption
+      if (a === undefined) { return; }
+
+      // const r = await addNodeType(definitions.value[2].id); // Requirement
+      // const qm = await addNodeType(definitions.value[3].id); // Qualitative Model
+      const wd = await addNodeType(definitions.value[7].id); // Wet-lab Data
+      if (wd === undefined) { return; }
+
+      const sm = await addNodeType(definitions.value[4].id); // Simulation Model
+      if (sm === undefined) {
+        return;
+      }
+
+      // Out-nodes
+      const se = await addNodeType(definitions.value[5].id); // Simulation Experiment
+      if (se === undefined) {
+        return;
+      }
+
+      const sd = await addNodeType(definitions.value[6].id); // Simulation Data
+      if (sd === undefined) {
+        return;
+      }
+
+      // Relationships
+      // addRelationship(asm, rq, 'Used');
+      addRelationship(asm, a, 'Used');
+      // addRelationship(asm, r, 'Used');
+      // addRelationship(asm, qm, 'Used');
+      addRelationship(asm, wd, 'Used');
+      addRelationship(asm, sm, 'Used');
+      //
+      addRelationship(se, asm, 'Generated by');
+      addRelationship(sd, asm, 'Generated by');
+      //
+      return;
     }
 
     function cancelRelationshipSelection() {
@@ -1499,6 +1865,7 @@ export default createComponent({
       colorChanges,
       createStudy,
       addNode,
+      addPattern,
       selectedStudy,
       closeStudyCard,
       deleteSelectedStudy,
@@ -1529,14 +1896,16 @@ export default createComponent({
 
 <style lang="scss" scoped>
 .cards {
-  width: 350px;
+  // resize the cards to make room for pattern selection
+  width: 400px;
   max-height: 100vh;
   overflow-y: auto;
   padding: 20px 1px;
 }
 
 .search {
-  width: 450px;
+  // resize the cards to make room for pattern selection
+  width: 350px;
   // 40 px for margin/padding and 60px for the information button
   max-height: calc(100vh - 100px);
 }
