@@ -239,6 +239,13 @@ export const ProvenanceNodeSchema = n.schema({
     },
 
     /**
+     * The facet.
+     */
+     facet: {
+      type: n.string,
+    },
+
+    /**
      * The ID of the other node that it is related to.
      * 
      * This was from the following request:

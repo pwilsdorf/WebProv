@@ -16,6 +16,10 @@
       <b-input type="string" :value="node.label" @input="labelChange"></b-input>
     </b-field>
 
+    <b-field label="Facet">
+      <b-input type="string" :value="node.facet" @input="facetChange"></b-input>
+    </b-field>
+
     <b-field label="Study (Reference)">
       <b-select :value="node.studyId" @input="studyIdChange" expanded>
         <!-- Undefined is a valid value -->
@@ -239,6 +243,10 @@ export default createComponent({
       updateNode('label', value);
     }
 
+    function facetChange(value: string) {
+      updateNode('facet', value);
+    }
+
     function clearRelatedTo() {
       updateNode('relatedTo', '');
     }
@@ -314,6 +322,7 @@ export default createComponent({
     return {
       deleteField,
       labelChange,
+      facetChange,
       definitionChange,
       studyIdChange,
       updateNode,
