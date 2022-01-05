@@ -20,7 +20,7 @@
       <b-input type="string" :value="node.facet" @input="facetChange"></b-input>
     </b-field>
 
-    <b-field label="Study (Reference)">
+    <b-field label="Study">
       <b-select :value="node.studyId" @input="studyIdChange" expanded>
         <!-- Undefined is a valid value -->
         <option :value="undefined"></option>
@@ -82,8 +82,23 @@
       </div>
     </b-field>
 
-    <b-field v-for="key in definedFields" :key="key" :label="key">
-      <b-input
+    <div v-for="key in definedFields" :key="key" :label="key">
+      <b-tooltip v-if="key === 'TRACE-Token'" label="Open TRACE" position="is-right">
+        <b-button
+          style="transform: rotate(-90deg)"
+          type="is-text" 
+          icon-right="call-split"
+        ></b-button>
+      </b-tooltip>
+      <b-tooltip v-if="key === 'Reference'" label="Open Reference" position="is-right">
+        <b-button
+          style="transform: rotate(-90deg)"
+          type="is-text" 
+          icon-right="call-split"
+        ></b-button>
+      </b-tooltip>
+      <b-field :label=key>
+        <b-input
         v-if="!definedFieldsOptions[key]"
         :value="fieldsLookup[key] ? fieldsLookup[key].value : ''"
         @input="updateDefinedKey(key, $event)"
@@ -105,7 +120,8 @@
           {{ option }}
         </option>
       </b-select>
-    </b-field>
+      </b-field>
+    </div>
 
     <b-field
       label="Further Information"
