@@ -1263,17 +1263,19 @@ export default createComponent({
       // addNodeType(definitions.value[3].id); // Qualitative Model
       // addNodeType(definitions.value[4].id); // Simulation Model
       // addNodeType(definitions.value[5].id); // Simulation Experiment
-      // addNodeType(definitions.value[6].id); // Simulation Data
-      // addNodeType(definitions.value[7].id); // Wet-lab Data
-      // addNodeType(definitions.value[8].id); // Building Simulation Model
-      // addNodeType(definitions.value[9].id); // Calibrating Simulation Model
-      // addNodeType(definitions.value[10].id); // Validating Simulation Model
-      // addNodeType(definitions.value[11].id); // Analyzing Simulation Model
-      // addNodeType(definitions.value[12].id); // Visualizing Simulation Result
+      // addNodeType(definitions.value[6].id); // Simulation Visualization
+      // addNodeType(definitions.value[7].id); // Simulation Data
+      // addNodeType(definitions.value[8].id); // Wet-lab Data
+      // addNodeType(definitions.value[9].id); // Field Data
+      // addNodeType(definitions.value[10].id); // Building Simulation Model
+      // addNodeType(definitions.value[11].id); // Calibrating Simulation Model
+      // addNodeType(definitions.value[12].id); // Validating Simulation Model
+      // addNodeType(definitions.value[13].id); // Analyzing Simulation Model
+      // addNodeType(definitions.value[14].id); // Visualizing Simulation Result
 
     async function addCreatingPattern() {
       // Activity
-      const bsm = await addNodeType(definitions.value[8].id); // Building Simulation Model
+      const bsm = await addNodeType(definitions.value[10].id); // Building Simulation Model
       if (bsm === undefined) { return; }
 
       // In-nodes
@@ -1289,7 +1291,7 @@ export default createComponent({
       const qm = await addNodeType(definitions.value[3].id); // Qualitative Model
       if (qm === undefined) { return; }
 
-      const wd = await addNodeType(definitions.value[7].id); // Wet-lab Data
+      const wd = await addNodeType(definitions.value[8].id); // Wet-lab Data
       if (wd === undefined) { return; }
 
       // Out-nodes
@@ -1310,7 +1312,7 @@ export default createComponent({
 
     async function addRefiningPattern() {
       // Activity
-      const bsm = await addNodeType(definitions.value[8].id); // Building Simulation Model
+      const bsm = await addNodeType(definitions.value[10].id); // Building Simulation Model
       if (bsm === undefined) { return; }
 
       // In-nodes
@@ -1326,7 +1328,7 @@ export default createComponent({
       const qm = await addNodeType(definitions.value[3].id); // Qualitative Model
       if (qm === undefined) { return; }
 
-      const wd = await addNodeType(definitions.value[7].id); // Wet-lab Data
+      const wd = await addNodeType(definitions.value[8].id); // Wet-lab Data
       if (wd === undefined) { return; }
 
       const sm1 = await addNodeType(definitions.value[4].id); // Simulation Model
@@ -1351,7 +1353,7 @@ export default createComponent({
 
     async function addReimplementingPattern() {
       // Activity
-      const bsm = await addNodeType(definitions.value[8].id); // Building Simulation Model
+      const bsm = await addNodeType(definitions.value[10].id); // Building Simulation Model
       if (bsm === undefined) { return; }
 
       // In-nodes
@@ -1372,7 +1374,7 @@ export default createComponent({
 
     async function addComposingPattern() {
       // Activity
-      const bsm = await addNodeType(definitions.value[8].id); // Building Simulation Model
+      const bsm = await addNodeType(definitions.value[10].id); // Building Simulation Model
       if (bsm === undefined) { return; }
 
       // In-nodes
@@ -1388,7 +1390,7 @@ export default createComponent({
       const qm = await addNodeType(definitions.value[3].id); // Qualitative Model
       if (qm === undefined) { return; }
 
-      const wd = await addNodeType(definitions.value[7].id); // Wet-lab Data
+      const wd = await addNodeType(definitions.value[8].id); // Wet-lab Data
       if (wd === undefined) { return; }
 
       const sm1 = await addNodeType(definitions.value[4].id); // Simulation Model
@@ -1417,20 +1419,23 @@ export default createComponent({
 
     async function addCalibratingPattern() {
       // Activity
-      const csm = await addNodeType(definitions.value[9].id); // Calibrating Simulation Model
+      const csm = await addNodeType(definitions.value[11].id); // Calibrating Simulation Model
       if (csm === undefined) { return; }
 
       // In-nodes
-      // const rq = await addNodeType(definitions.value[0].id); // Research Question
+      const rq = await addNodeType(definitions.value[0].id); // Research Question
+      if (rq === undefined) { return; }
+      
       const a = await addNodeType(definitions.value[1].id); // Assumption
       if (a === undefined) { return; }
 
       const r = await addNodeType(definitions.value[2].id); // Requirement
       if (r === undefined) { return; }
 
-      // const qm = await addNodeType(definitions.value[3].id); // Qualitative Model
+      const qm = await addNodeType(definitions.value[3].id); // Qualitative Model
+      if (qm === undefined) { return; }
 
-      const wd = await addNodeType(definitions.value[7].id); // Wet-lab Data
+      const wd = await addNodeType(definitions.value[8].id); // Wet-lab Data
       if (wd === undefined) { return; }
 
       const sm1 = await addNodeType(definitions.value[4].id); // Simulation Model
@@ -1443,14 +1448,14 @@ export default createComponent({
       const se = await addNodeType(definitions.value[5].id); // Simulation Experiment
       if (se === undefined) { return; }
 
-      const sd = await addNodeType(definitions.value[6].id); // Simulation Data
+      const sd = await addNodeType(definitions.value[7].id); // Simulation Data
       if (sd === undefined) { return; }
 
       // Relationships
-      // addRelationship(csm, rq, 'Used');
+      addRelationship(csm, rq, 'Used');
       addRelationship(csm, a, 'Used');
       addRelationship(csm, r, 'Used');
-      // addRelationship(csm, qm, 'Used');
+      addRelationship(csm, qm, 'Used');
       addRelationship(csm, wd, 'Used');
       addRelationship(csm, sm1, 'Used');
       //
@@ -1463,7 +1468,7 @@ export default createComponent({
 
     async function addValidatingPattern() {
       // Activity
-      const vsm = await addNodeType(definitions.value[10].id); // Validating Simulation Model
+      const vsm = await addNodeType(definitions.value[12].id); // Validating Simulation Model
       if (vsm === undefined) { return; }
 
       // In-nodes
@@ -1477,7 +1482,7 @@ export default createComponent({
 
       // const qm = await addNodeType(definitions.value[3].id); // Qualitative Model
 
-      const wd = await addNodeType(definitions.value[7].id); // Wet-lab Data
+      const wd = await addNodeType(definitions.value[8].id); // Wet-lab Data
       if (wd === undefined) { return; }
 
       const sm1 = await addNodeType(definitions.value[4].id); // Simulation Model
@@ -1487,7 +1492,7 @@ export default createComponent({
       const se = await addNodeType(definitions.value[5].id); // Simulation Experiment
       if (se === undefined) { return; }
 
-      const sd = await addNodeType(definitions.value[6].id); // Simulation Data
+      const sd = await addNodeType(definitions.value[7].id); // Simulation Data
       if (sd === undefined) { return; }
 
       // Relationships
@@ -1506,7 +1511,7 @@ export default createComponent({
 
     async function addAnalyzingPattern() {
       // Activity
-      const asm = await addNodeType(definitions.value[11].id); // Analyzing Simulation Model
+      const asm = await addNodeType(definitions.value[13].id); // Analyzing Simulation Model
       if (asm === undefined) { return; }
 
       // In-nodes
@@ -1516,7 +1521,7 @@ export default createComponent({
 
       // const r = await addNodeType(definitions.value[2].id); // Requirement
       // const qm = await addNodeType(definitions.value[3].id); // Qualitative Model
-      const wd = await addNodeType(definitions.value[7].id); // Wet-lab Data
+      const wd = await addNodeType(definitions.value[8].id); // Wet-lab Data
       if (wd === undefined) { return; }
 
       const sm = await addNodeType(definitions.value[4].id); // Simulation Model
@@ -1530,7 +1535,7 @@ export default createComponent({
         return;
       }
 
-      const sd = await addNodeType(definitions.value[6].id); // Simulation Data
+      const sd = await addNodeType(definitions.value[7].id); // Simulation Data
       if (sd === undefined) {
         return;
       }
@@ -1551,25 +1556,25 @@ export default createComponent({
 
     async function addVisualizingPattern() {
       // Activity
-      const vsr = await addNodeType(definitions.value[12].id); // Visualizing Simulation Result
+      const vsr = await addNodeType(definitions.value[14].id); // Visualizing Simulation Result
       if (vsr === undefined) { return; }
 
       // In-nodes
-      const sd1 = await addNodeType(definitions.value[6].id); // Simulation Data
-      if (sd1 === undefined) {
+      const sd = await addNodeType(definitions.value[7].id); // Simulation Data
+      if (sd === undefined) {
         return;
       }
 
       // Out-nodes
-      const sd2 = await addNodeType(definitions.value[6].id); // Simulation Data
-      if (sd2 === undefined) {
+      const sv = await addNodeType(definitions.value[6].id); // Simulation Visualization
+      if (sv === undefined) {
         return;
       }
 
       // Relationships
-      addRelationship(vsr, sd1, 'Used');
+      addRelationship(vsr, sd, 'Used');
       //
-      addRelationship(sd2, vsr, 'Generated by');
+      addRelationship(sv, vsr, 'Generated by');
       //
       return;
     }
