@@ -25,7 +25,7 @@
         <!-- Undefined is a valid value -->
         <option :value="undefined"></option>
         <option v-for="study in studies" :key="study.id" :value="study.id">
-          {{ study.source }}
+          {{ study.label }}
         </option>
       </b-select>
     </b-field>
