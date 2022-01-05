@@ -1,4 +1,5 @@
 import { NodeDefinition, RelationshipRule } from 'common';
+import { getValidationError } from 'common/node_modules/io-ts';
 
 export {
   provenanceNodes,
@@ -14,7 +15,7 @@ const researchQuestion: NodeDefinition = {
   classification: 'entity',
   //labelFormatString: "RQ${version}${study ? ' (' + study.source  + ')' : ''}",
   labelFormatString: 'RQ${version}',
-  informationFields: ['Description'],
+  informationFields: ['TRACE-Token', 'Description'],
 };
 
 const assumption: NodeDefinition = {
@@ -22,7 +23,7 @@ const assumption: NodeDefinition = {
   classification: 'entity',
   //labelFormatString: "A${version}${study ? ' (' + study.source  + ')' : ''}",
   labelFormatString: 'A${version}',
-  informationFields: ['Description', 'Category'],
+  informationFields: ['TRACE-Token','Description'],
 };
 
 const requirement: NodeDefinition = {
@@ -31,9 +32,10 @@ const requirement: NodeDefinition = {
   //labelFormatString: "R${version}${study ? ' (' + study.source  + ')' : ''}",
   labelFormatString: 'R${version}',
   informationFields: [
+    'TRACE-Token',
+    'Type,None,Qualitative,Quantitative',
+    'Specification (language)',
     'Description',
-    'Main species',
-    'Type,Qualitative,Quantitative',
   ],
   showRelatedTo: true,
 };
@@ -43,7 +45,7 @@ const qualitativeModel: NodeDefinition = {
   classification: 'entity',
   //labelFormatString: "QM${version}${study ? ' (' + study.source  + ')' : ''}",
   labelFormatString: 'QM${version}',
-  informationFields: ['Description', 'Reference', 'Species', 'Compartments'],
+  informationFields: ['TRACE-Token', 'Reference', 'Description'],
 };
 
 const simulationModel: NodeDefinition = {
@@ -51,7 +53,13 @@ const simulationModel: NodeDefinition = {
   classification: 'entity',
   //labelFormatString: "SM${version}${study ? ' (' + study.source  + ')' : ''}",
   labelFormatString: 'SM${version}',
-  informationFields: ['Description', 'Reference'],
+  informationFields: [
+    'TRACE-Token',
+    'Reference',
+    'Status,Successful Validation,Successful Calibration',
+    'Software',
+    'Description', 
+  ],
 };
 
 const simulationExperiment: NodeDefinition = {
@@ -60,9 +68,26 @@ const simulationExperiment: NodeDefinition = {
   //labelFormatString: "E${version}${study ? ' (' + study.source  + ')' : ''}",
   labelFormatString: 'SE${version}',
   informationFields: [
-    'Description',
+    'TRACE-Token',
     'Reference',
     'Category,Optimization,Sensitivity analysis,Perturbation,Parameter scan,Steady-state analysis,Time course analysis,Other',
+    'Specification (language)',
+    'Software',
+    'Description'
+  ],
+};
+
+const simulationVisualization: NodeDefinition = {
+  id: 'Simulation Visualization',
+  classification: 'entity',
+  //labelFormatString: "SV${version}${study ? ' (' + study.source  + ')' : ''}",
+  labelFormatString: 'SV${version}',
+  informationFields: [
+    'TRACE-Token',
+    'Reference',
+    'Specification (language)',
+    'Software',
+    'Description'
   ],
 };
 
@@ -71,7 +96,10 @@ const simulationData: NodeDefinition = {
   classification: 'entity',
   //labelFormatString: "D${version}${study ? ' (' + study.source  + ')' : ''}",
   labelFormatString: 'SD${version}',
-  informationFields: ['Description', 'Reference'],
+  informationFields: [
+    'Reference',
+    'Status,Successful Validation,Successful Calibration',
+    'Description'],
   showRelatedTo: true,
 };
 
@@ -81,11 +109,19 @@ const wetlabData: NodeDefinition = {
   //labelFormatString: "D${version}${study ? ' (' + study.source  + ')' : ''}",
   labelFormatString: 'WD${version}',
   informationFields: [
-    'Description',
     'Reference',
-    'Type of experiment,In vitro,In vivo',
-    'Organism',
-    'Organ/Tissue/Cell line',
+    'Description'
+  ],
+};
+
+const fieldData: NodeDefinition = {
+  id: 'Field Data',
+  classification: 'entity',
+  //labelFormatString: "D${version}${study ? ' (' + study.source  + ')' : ''}",
+  labelFormatString: 'FD${version}',
+  informationFields: [
+    'Reference',
+    'Description'
   ],
 };
 
@@ -363,8 +399,10 @@ export const definitions: NodeDefinition[] = [
   qualitativeModel,
   simulationModel,
   simulationExperiment,
+  simulationVisualization,
   simulationData,
   wetlabData,
+  fieldData,
   buildingActivity,
   calibratingActivity,
   validatingActivity,
