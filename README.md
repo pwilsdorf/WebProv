@@ -22,13 +22,22 @@ The goal of this project is the create a web platform (WebProv) to automatically
 
 _(This section describes the usage of WebProv as used by Budde et al. (2021).)_
 
-Once all provenance information of a simulation study has been collected (or while doing so), this information can be included in WebProv. A user needs to do create a study, which needs a reference (last name of first author and year of publication) as well as the name of the signaling pathway the study is based on. If more than one signaling pathway is being considered, than all pathways should be in a set (e.g., {pathway1, pathway2}).
+Once all provenance information of a simulation study has been collected (or while doing so), this information can be included in WebProv. 
+First, a user needs to create a study, which requires a name (usually the last name of first author and year of publication) as well as a reference to the simulation study (e.g., a journal article). 
 
 Next, one may add nodes and connect these nodes (right click to draw a connection). The nodes can be entities or activities. Each node requires meta-information as requested by our ontology. A label is automatically assigned to a node. They are consecutively numbered within one study.
 
 Besides creating provenance graphs and entering provenance information one can also download or upload entire graphs as JSON. The export function only exports the visible graph and not everything that is stored in the Neo4J database.
 
 More information is available when clickling on the "+" in the lower right corner and then on the "i" ("show help").
+
+## Integrating WebProv with TRACE and ODD
+
+coming soon...
+
+## Fisheries Example
+
+coming soon...
 
 ## Environment Setup
 
