@@ -57,8 +57,7 @@
       </div>
       <!-- <div style="flex: 1"></div> -->
 
-      <!-- Arrange buttons in rows -->
-      <b-row>
+      <div>
         <b-button
           v-if="showEditTools"
           class="clear-button overlay-child"
@@ -76,9 +75,7 @@
         >
           Add Node
         </b-button>
-      </b-row>
         
-      <b-row>
         <b-button
           v-if="showEditTools"
           class="clear-button overlay-child"
@@ -87,6 +84,8 @@
         >
           Exit
         </b-button>
+
+        <div class="spacer"></div>
 
         <!-- Add provenance pattern (dropdown button) -->
         <b-select name="AddPattern" v-if="showEditTools" @input="addPattern" expanded v-model="selectedPattern" class="clear-button overlay-child">
@@ -100,7 +99,7 @@
           <option value="Analyzing Simulation Model">Analyzing Simulation Model</option>
           <option value="Visualizing Simulation Result">Visualizing Simulation Result</option>
         </b-select>
-      </b-row>
+      </div>
 
       <div class="cards overlay-child">
         <prov-legend-card v-bind="legendProps"></prov-legend-card>
@@ -1816,8 +1815,8 @@ export default createComponent({
         <br>
         <br>
 
-        This is an extension of the original version of WebProv, to support agent-based simulation 
-        studies (in ecology) and to integrate provenance with 
+        This is an extension of the original version of WebProv, to support agent-based simulation
+        studies (in ecology) and to integrate provenance with
         <a href="https://doi.org/10.1016/j.ecolmodel.2014.01.018">TRACE</a> documents.
 
         <br>

@@ -99,6 +99,7 @@ const main = async () => {
   //   data.studies.push(...json.studies);
   // }
 
+  // data.json contains the Baltic cod study
   const data = JSON.parse(fs.readFileSync(__dirname + '/data.json').toString());
 
   const result = ExportInterfaceType.decode(data);
