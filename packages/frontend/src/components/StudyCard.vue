@@ -13,12 +13,6 @@
           @input="setSource"
         ></b-input>
       </b-field>
-      <b-field class="field" label="Signaling Pathway">
-        <b-input 
-          :value="study.signalingPathway"
-          @input="setSignalingPathway"
-        ></b-input>
-      </b-field>
     </div>
     <template v-slot:footer>
       <a class="card-footer-item" @click="close">Close</a>
@@ -64,14 +58,8 @@ export default createComponent({
       context.emit('update');
     };
 
-    const setSignalingPathway = (signalingPathway: string) => {
-      setVue(props.study, 'signalingPathway', signalingPathway);
-      context.emit('update');
-    };
-
     return {
       deleteStudy,
-      setSignalingPathway,
       searchModel,
       setSource,
       setLabel,

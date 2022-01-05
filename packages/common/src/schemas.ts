@@ -168,12 +168,6 @@ export const StudySchema = n.schema({
     },
   },
   optional: {
-    /**
-     * The signaling pathway information.
-     */
-    signalingPathway: {
-      type: n.string,
-    },
 
     /**
      * The study label. If none is provided, a label is automatically generated.
