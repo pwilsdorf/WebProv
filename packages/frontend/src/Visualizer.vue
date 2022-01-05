@@ -1807,17 +1807,24 @@ export default createComponent({
         informationNodes.value = result.items;
       });
 
-      // TODO add link after publication
       const message = `
-        Thank you for using WebProv, a web-based provenance tool used in the publication
-        <i>Relating simulation studies by provenance—Developing a family of Wnt signaling
-        models</i>.
+        Thank you for using WebProv, a web-based provenance tool first introduced in the publication
+        <a href="https://doi.org/10.1371/journal.pcbi.1009227">
+        <i>Relating simulation studies by provenance—Developing a family of Wnt signaling models</i>
+        </a>.
 
         <br>
         <br>
 
-        You can browse the provenance information from the Wnt simulation study by Lee
-        et al. (2003). You may also add your own provenance data and download the dataset.
+        This is an extension of the original version of WebProv, to support agent-based simulation 
+        studies (in ecology) and to integrate provenance with 
+        <a href="https://doi.org/10.1016/j.ecolmodel.2014.01.018">TRACE</a> documents.
+
+        <br>
+        <br>
+
+        You can browse the provenance information from the Baltic cod simulation study by Pierce
+        et al. You may also add your own provenance data and export the dataset as JSON.
 
         <br>
         <br>
