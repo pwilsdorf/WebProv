@@ -22,6 +22,14 @@
           MATCH (n:ProvenanceNode) WHERE n.id = " A169885947" RETURN n
         </code>
 
+        <h1>Creating Nodes</h1>
+        <p>
+          To create a node, just click on the "Add Node" button located on the
+          top-right of the screen. If you don't see this button, make sure to
+          use enable mode by clicking the "Show Editor Tools" button. This will
+          create a new node and automatically save it to the database.
+        </p>
+
         <h1>Creating Links</h1>
         <p>
           To create a link, right-click and hold on a node and then drag your
@@ -32,12 +40,15 @@
           Likewise, if the node turns green, this indicates a valid connection.
         </p>
 
-        <h1>Creating Nodes</h1>
+        <h1>Using Patterns</h1>
         <p>
-          To create a node, just click on the "Add Node" button located on the
-          top-right of the screen. If you don't see this button, make sure to
-          use enable mode by clicking the "Show Editor Tools" button. This will
-          create a new node and automatically save it to the database.
+          To add a pattern, just select one of the pre-defined activities from the 
+          "Add Pattern" menu located on the top-right of the screen. This will create 
+          a set of new nodes and dependencies between them and automatically saves 
+          them to the database. If you don't see the drop-down menu, make sure to
+          use enable mode by clicking the "Show Editor Tools" button. 
+          Once the pattern is created, you can edit the nodes and create links to other 
+          parts of the provenance graph.
         </p>
 
         <h1>Editing Nodes</h1>
