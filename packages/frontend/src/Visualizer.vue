@@ -1425,7 +1425,7 @@ export default createComponent({
       // In-nodes
       const rq = await addNodeType(definitions.value[0].id); // Research Question
       if (rq === undefined) { return; }
-      
+
       const a = await addNodeType(definitions.value[1].id); // Assumption
       if (a === undefined) { return; }
 

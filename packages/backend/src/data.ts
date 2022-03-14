@@ -286,6 +286,13 @@ export const rules: RelationshipRule[] = [
     target: wetlabData.id,
   },
   {
+    id: 'building-activity-used-field-data',
+    type: ['Used'],
+    cardinality: 'one-to-many',
+    source: buildingActivity.id,
+    target: fieldData.id,
+  },
+  {
     id: 'calibrating-activity-used-simulation-model',
     type: ['Used'],
     cardinality: 'one-to-many',
@@ -377,6 +384,13 @@ export const rules: RelationshipRule[] = [
     target: wetlabData.id,
   },
   {
+    id: 'validating-activity-used-field-data',
+    type: ['Used'],
+    cardinality: 'one-to-many',
+    source: validatingActivity.id,
+    target: fieldData.id,
+  },
+  {
     id: 'analyzing-activity-used-simulation-model',
     type: ['Used'],
     cardinality: 'one-to-many',
@@ -403,6 +417,13 @@ export const rules: RelationshipRule[] = [
     cardinality: 'one-to-many',
     source: analyzingActivity.id,
     target: wetlabData.id,
+  },
+  {
+    id: 'analyzing-activity-used-field-data',
+    type: ['Used'],
+    cardinality: 'one-to-many',
+    source: analyzingActivity.id,
+    target: fieldData.id,
   },
   {
     id: 'visualizing-activity-used-simulation-data',
