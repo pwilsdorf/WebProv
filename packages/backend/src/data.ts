@@ -15,7 +15,7 @@ const researchQuestion: NodeDefinition = {
   classification: 'entity',
   //labelFormatString: "RQ${version}${study ? ' (' + study.source  + ')' : ''}",
   labelFormatString: 'RQ${version}',
-  informationFields: ['TRACE-Token', 'Description'],
+  informationFields: ['TRACE Tag', 'Description'],
 };
 
 const assumption: NodeDefinition = {
@@ -23,7 +23,7 @@ const assumption: NodeDefinition = {
   classification: 'entity',
   //labelFormatString: "A${version}${study ? ' (' + study.source  + ')' : ''}",
   labelFormatString: 'A${version}',
-  informationFields: ['TRACE-Token','Description'],
+  informationFields: ['TRACE Tag','Description'],
 };
 
 const requirement: NodeDefinition = {
@@ -32,7 +32,7 @@ const requirement: NodeDefinition = {
   //labelFormatString: "R${version}${study ? ' (' + study.source  + ')' : ''}",
   labelFormatString: 'R${version}',
   informationFields: [
-    'TRACE-Token',
+    'TRACE Tag',
     'Type,None,Qualitative,Quantitative',
     'Specification (language)',
     'Description',
@@ -45,7 +45,7 @@ const qualitativeModel: NodeDefinition = {
   classification: 'entity',
   //labelFormatString: "QM${version}${study ? ' (' + study.source  + ')' : ''}",
   labelFormatString: 'QM${version}',
-  informationFields: ['TRACE-Token', 'Reference', 'Description'],
+  informationFields: ['TRACE Tag', 'Reference', 'Description'],
 };
 
 const simulationModel: NodeDefinition = {
@@ -54,7 +54,7 @@ const simulationModel: NodeDefinition = {
   //labelFormatString: "SM${version}${study ? ' (' + study.source  + ')' : ''}",
   labelFormatString: 'SM${version}',
   informationFields: [
-    'TRACE-Token',
+    'TRACE Tag',
     'Reference',
     'Status,Successful Validation,Successful Calibration',
     'Software',
@@ -68,7 +68,7 @@ const simulationExperiment: NodeDefinition = {
   //labelFormatString: "E${version}${study ? ' (' + study.source  + ')' : ''}",
   labelFormatString: 'SE${version}',
   informationFields: [
-    'TRACE-Token',
+    'TRACE Tag',
     'Reference',
     'Category,Optimization,Sensitivity analysis,Perturbation,Parameter scan,Steady-state analysis,Time course analysis,Other',
     'Specification (language)',
@@ -83,7 +83,7 @@ const simulationVisualization: NodeDefinition = {
   //labelFormatString: "SV${version}${study ? ' (' + study.source  + ')' : ''}",
   labelFormatString: 'SV${version}',
   informationFields: [
-    'TRACE-Token',
+    'TRACE Tag',
     'Reference',
     'Specification (language)',
     'Software',
