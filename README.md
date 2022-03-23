@@ -31,11 +31,28 @@ Besides creating provenance graphs and entering provenance information one can a
 
 More information is available when clickling on the "+" in the lower right corner and then on the "i" ("show help").
 
-## Integrating WebProv with TRACE and ODD
+## Integrating WebProv with Patterns, TRACE, and GitHub
 
-coming soon...
+This extension of WebProv is designed to facilitate the development of provenance graphs via patterns, and to improve the understanding of modeling and simulation studies of ecological systems and beyond via integration with the TRACE and the ODD protocol.
 
-## Fisheries Example
+### Provenance Patterns
+
+Currently, the following patterns are supported:
+* Creating Simulation Model
+* Refining Simulation Model
+* Re-Implementing Simulation Model
+* Composing Simulation Model
+* Calibrating Simulation Model
+* Validating Simulation Model
+* Analyzing Simulation Model
+
+### TRACE, ODD and GitHub
+
+Documentation based on the reporting guideline TRACE allow for in-depth description (based on ODD in the case of agent-based models) and evaludation of a model.
+To link a parts of the provenance graph to TRACE, enter the name of the related TRACE section in the information field "TRACE Tag".
+To link the various provenance entities to their source code or data files, enter an URL (e.g., GitHub) in the "Reference" field. 
+
+### Fisheries Science Example
 
 coming soon...
 
