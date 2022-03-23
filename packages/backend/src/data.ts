@@ -36,8 +36,7 @@ const requirement: NodeDefinition = {
     'Type,None,Qualitative,Quantitative',
     'Specification (language)',
     'Description',
-  ],
-  showRelatedTo: true,
+  ]
 };
 
 const qualitativeModel: NodeDefinition = {
@@ -99,8 +98,7 @@ const simulationData: NodeDefinition = {
   informationFields: [
     'Reference',
     'Status,Successful Validation,Successful Calibration',
-    'Description'],
-  showRelatedTo: true,
+    'Description']
 };
 
 const wetlabData: NodeDefinition = {
