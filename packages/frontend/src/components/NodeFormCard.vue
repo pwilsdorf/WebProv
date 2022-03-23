@@ -83,18 +83,21 @@
     </b-field>
 
     <div v-for="key in definedFields" :key="key" :label="key">
-      <b-tooltip v-if="key === 'TRACE-Token'" label="Open TRACE" position="is-right">
+      <!--
+      <b-tooltip v-if="key === 'TRACE Tag'" label="Open TRACE" position="is-right">
         <b-button
           style="transform: rotate(-90deg)"
           type="is-text" 
           icon-right="call-split"
         ></b-button>
       </b-tooltip>
+      -->
       <b-tooltip v-if="key === 'Reference'" label="Open Reference" position="is-right">
         <b-button
           style="transform: rotate(-90deg)"
           type="is-text" 
           icon-right="call-split"
+          @click="openReference"
         ></b-button>
       </b-tooltip>
       <b-field :label=key>
@@ -233,6 +236,11 @@ export default createComponent({
       props.fields.filter((field) => !definedFields.value.includes(field.key)),
     );
 
+    function openReference() {
+      const key = 'Reference';
+      window.open(fieldsLookup.value[key].value);
+    }
+
     function updateKey(index: number, newValue: string) {
       updateInformationNode(props.fields[index], 'key', newValue);
     }
@@ -344,6 +352,7 @@ export default createComponent({
       updateNode,
       addField,
       updateValue,
+      openReference,
       updateKey,
       definedFields,
       extraFields,
