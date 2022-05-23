@@ -1,6 +1,6 @@
 <template>
   <card :title="`Node (${getLabel(node)})`">
-    <b-field label="Type">
+    <b-field label="Node Type">
       <b-select :value="node.definitionId" @input="definitionChange" expanded>
         <option
           v-for="definition in definitions"
@@ -92,6 +92,7 @@
         ></b-button>
       </b-tooltip>
       -->
+      <!--
       <b-tooltip v-if="key === 'Reference'" label="Open Reference" position="is-right">
         <b-button
           style="transform: rotate(-90deg)"
@@ -100,6 +101,7 @@
           @click="openReference"
         ></b-button>
       </b-tooltip>
+      -->
       <b-field :label=key>
         <b-input
         v-if="!definedFieldsOptions[key]"
@@ -114,7 +116,7 @@
         @input="updateDefinedKey(key, $event)"
         expanded
       >
-        <option :value="undefined">None</option>
+        <option :value="undefined"></option>
         <option
           v-for="option in definedFieldsOptions[key]"
           :key="option"

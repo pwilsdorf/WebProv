@@ -15,7 +15,11 @@ const researchQuestion: NodeDefinition = {
   classification: 'entity',
   //labelFormatString: "RQ${version}${study ? ' (' + study.source  + ')' : ''}",
   labelFormatString: 'RQ${version}',
-  informationFields: ['TRACE Tag', 'Description'],
+  informationFields: [
+    'TRACE Tag',  
+    'Type,Explanation,Prediction,Other',
+    'Description'
+  ]
 };
 
 const assumption: NodeDefinition = {
@@ -23,7 +27,11 @@ const assumption: NodeDefinition = {
   classification: 'entity',
   //labelFormatString: "A${version}${study ? ' (' + study.source  + ')' : ''}",
   labelFormatString: 'A${version}',
-  informationFields: ['TRACE Tag','Description'],
+  informationFields: [
+    'TRACE Tag',
+    'Type,Quantitative,Narrative,Other',
+    'Description'
+  ],
 };
 
 const requirement: NodeDefinition = {
@@ -33,8 +41,8 @@ const requirement: NodeDefinition = {
   labelFormatString: 'R${version}',
   informationFields: [
     'TRACE Tag',
-    'Type,None,Qualitative,Quantitative',
-    'Specification (language)',
+    'Specification',
+    'Type,Quantitative,Data-based,Narrative-based,Other',
     'Description',
   ]
 };
@@ -44,7 +52,12 @@ const qualitativeModel: NodeDefinition = {
   classification: 'entity',
   //labelFormatString: "QM${version}${study ? ' (' + study.source  + ')' : ''}",
   labelFormatString: 'QM${version}',
-  informationFields: ['TRACE Tag', 'Reference', 'Description'],
+  informationFields: [
+    'Reference',
+    'TRACE Tag',
+    'Type,Informal,Formal,Other',
+    'Description'
+  ],
 };
 
 const simulationModel: NodeDefinition = {
@@ -53,10 +66,12 @@ const simulationModel: NodeDefinition = {
   //labelFormatString: "SM${version}${study ? ' (' + study.source  + ')' : ''}",
   labelFormatString: 'SM${version}',
   informationFields: [
-    'TRACE Tag',
     'Reference',
-    'Status,Successful Validation,Successful Calibration',
+    'TRACE Tag',
+    'Specification',
     'Software',
+    'Status,Successful Validation,Successful Calibration',
+    'Type,ODE,IBM,Other',
     'Description', 
   ],
 };
@@ -67,25 +82,11 @@ const simulationExperiment: NodeDefinition = {
   //labelFormatString: "E${version}${study ? ' (' + study.source  + ')' : ''}",
   labelFormatString: 'SE${version}',
   informationFields: [
-    'TRACE Tag',
     'Reference',
-    'Category,Optimization,Sensitivity analysis,Perturbation,Parameter scan,Steady-state analysis,Time course analysis,Other',
-    'Specification (language)',
-    'Software',
-    'Description'
-  ],
-};
-
-const simulationVisualization: NodeDefinition = {
-  id: 'Simulation Visualization',
-  classification: 'entity',
-  //labelFormatString: "SV${version}${study ? ' (' + study.source  + ')' : ''}",
-  labelFormatString: 'SV${version}',
-  informationFields: [
     'TRACE Tag',
-    'Reference',
-    'Specification (language)',
+    'Specification',
     'Software',
+    'Type,Time course analysis,Parameter scan,Sensitivity analysis,Optimization,Other',
     'Description'
   ],
 };
@@ -97,8 +98,25 @@ const simulationData: NodeDefinition = {
   labelFormatString: 'SD${version}',
   informationFields: [
     'Reference',
+    'TRACE Tag',
     'Status,Successful Validation,Successful Calibration',
-    'Description']
+    'Description'
+  ]
+};
+
+const simulationVisualization: NodeDefinition = {
+  id: 'Simulation Visualization',
+  classification: 'entity',
+  //labelFormatString: "SV${version}${study ? ' (' + study.source  + ')' : ''}",
+  labelFormatString: 'SV${version}',
+  informationFields: [
+    'Reference',
+    'TRACE Tag',
+    'Specification',
+    'Software',
+    'Type,Graph,Animation,Other',
+    'Description'
+  ],
 };
 
 const wetlabData: NodeDefinition = {
@@ -108,6 +126,7 @@ const wetlabData: NodeDefinition = {
   labelFormatString: 'WD${version}',
   informationFields: [
     'Reference',
+    'TRACE Tag',
     'Description'
   ],
 };
@@ -119,6 +138,8 @@ const fieldData: NodeDefinition = {
   labelFormatString: 'FD${version}',
   informationFields: [
     'Reference',
+    'TRACE Tag',
+    'Type,Survey,Experiment,Other',
     'Description'
   ],
 };
