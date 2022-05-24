@@ -424,6 +424,13 @@ export const rules: RelationshipRule[] = [
     target: assumption.id,
   },
   {
+    id: 'analyzing-activity-used-requirement',
+    type: ['Used'],
+    cardinality: 'one-to-many',
+    source: analyzingActivity.id,
+    target: requirement.id,
+  },
+  {
     id: 'analyzing-activity-used-simulation-data',
     type: ['Used'],
     cardinality: 'one-to-many',
