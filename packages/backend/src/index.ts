@@ -217,7 +217,10 @@ const create = async () => {
   });
 
   router.delete('/database', async (req) => {
-    return await clearDatabase();
+    const res = await clearDatabase();
+    initialize()
+    initializeData()
+    return res;
   });
 
   router.post('/information-relationships', async (req) => {
