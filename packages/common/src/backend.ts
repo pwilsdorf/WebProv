@@ -44,6 +44,12 @@ export interface ProvenanceAPI {
     //
   };
 
+  '/database': {
+    DELETE: {
+      response: BackendSuccess | BackendNotFound | BackendError;
+    },
+  };
+
   '/information': {
     GET: {
       response: BackendError | BackendItems<InformationField>,
