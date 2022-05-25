@@ -374,6 +374,7 @@ export default createComponent({
       );
 
     const importNodes = async (e: HTMLInputEvent) => {
+
       const files = e.target.files;
       if (!files || files.length === 0) {
         return;
@@ -465,6 +466,15 @@ export default createComponent({
     };
 
     const fabActions: FabAction[] = [
+      {
+        name: 'Clear Database',
+        icon: 'clear_all',
+        callback: () => {
+          nodesToShow.value = {};
+          renderGraph();
+          clearDatabase();
+        },
+      },
       {
         name: 'Clear Nodes',
         icon: 'clear_all',
@@ -1033,6 +1043,10 @@ export default createComponent({
       };
 
       return node;
+    }
+
+    async function clearDatabase() {
+      await makeRequest(() => backend.deleteDatabase());
     }
 
     function renderGraph() {

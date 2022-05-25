@@ -216,6 +216,10 @@ const create = async () => {
     return await deleteRelationship(DependencyRelationshipSchema, req.query.id);
   });
 
+  router.delete('/database', async (req) => {
+    return await clearDatabase();
+  });
+
   router.post('/information-relationships', async (req) => {
     return await updateOrCreateConnection(
       InformationRelationshipSchema,

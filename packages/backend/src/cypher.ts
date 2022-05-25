@@ -191,6 +191,10 @@ export const clearDatabase = async () => {
   DETACH DELETE n
   `)
   session.close();
+
+  return {
+    result: 'success',
+  };
 };
 
 export const clearNode = async (name: string) => {

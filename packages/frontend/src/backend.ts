@@ -84,6 +84,10 @@ export const deleteInformationNode = async (id: string) => {
   return (await api.delete('/information', { params: { id } })).data;
 };
 
+export const deleteDatabase = async () => {
+  return (await api.delete('/database', {})).data;
+};
+
 export const getStudies = async () => {
   return (await api.get('/studies')).data;
 };
