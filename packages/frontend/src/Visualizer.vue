@@ -466,9 +466,10 @@ export default createComponent({
     };
 
     const fabActions: FabAction[] = [
+      // refer to icons here: https://material.io/icons/
       {
         name: 'Clear Database',
-        icon: 'clear_all',
+        icon: 'clear',
         callback: () => {
           nodesToShow.value = {};
           renderGraph();
