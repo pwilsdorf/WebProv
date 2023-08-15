@@ -184,7 +184,7 @@ export async function getRelationships<A extends Schema, B extends Schema, R ext
   });
 }
 
-export const clearDatabase = async () => {
+/* export const clearDatabase = async () => {
   const session = driver.session();
   await session.run(`
   MATCH (n)
@@ -195,6 +195,21 @@ export const clearDatabase = async () => {
   return {
     result: 'success',
   };
+}; */
+
+export const clearDatabase = async () => {
+  return await withHandling(async (): Promise<BackendSuccess | BackendNotFound> => {
+    const session = driver.session();
+    await session.run(`
+      MATCH (n)
+      DETACH DELETE n
+    `)
+    session.close();
+
+    return {
+      result: 'success',
+    };
+  });
 };
 
 export const clearNode = async (name: string) => {
