@@ -52,9 +52,17 @@ Documentation based on the reporting guideline TRACE allow for in-depth descript
 To link a parts of the provenance graph to TRACE, enter the name of the related TRACE section in the information field "TRACE Tag".
 To link the various provenance entities to their source code or data files, enter an URL (e.g., GitHub) in the "Reference" field. 
 
-### Fisheries Science Example
+## Examples
 
-coming soon...
+* Baltic cod
+* Recreational fisheries (angler)
+
+To import an example, go to the menu and click on "Import Graph from JSON". Then select a JSON file from the `examples` folder.
+
+To show all nodes from the imported graphs, run the following Cypher query:
+```
+MATCH (n:ProvenanceNode) RETURN n
+```
 
 ## Environment Setup
 
@@ -62,7 +70,7 @@ coming soon...
 
 The first step to setting up your environment involves installing `Node.js` (if not already installed). The recommended way to do this is by using the `Node Version Manager` tool:
 
-1. Install [Node Version Manager (NVM)](https://github.com/nvm-sh/nvm#install--update-script)
+1. Install [Node Version Manager (NVM)](https://github.com/nvm-sh/nvm#install--update-script) or [Node Version Manager (NVM) for Windows](https://github.com/coreybutler/nvm-windows)
 1. Install `Node.js` and `npm` using nvm: `nvm install node`
 
 ### 2. Docker
@@ -100,16 +108,20 @@ docker run -p7474:7474 -p7687:7687 -e NEO4J_AUTH=neo4j/<PASSWORD> neo4j:latest
 
 > Be sure to replace `<PASSWORD>` with your development password that you set above.
 
-Next, to start the hot-reload development servers, create two terminals and run the `dev` command within the `frontend` and `backend` packages:
+Next, to start the hot-reload development servers, create two terminals and run the following commands within the `frontend` and `backend` packages:
 
 ```
-# make sure to cd into `packages/frontend` or `packages/backend`
-make dev
+# make sure to cd into `packages/frontend`
+npm run serve
+
+# make sure to cd into `packages/backend`
+npm run dev
 ```
 
 Now you should be able to see the app running at [`http://localhost:8080`](http://localhost:8080).
 
 > Make sure that you have the backend server running before opening the app.
+
 
 ## Structure
 
