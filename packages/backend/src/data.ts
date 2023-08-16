@@ -134,12 +134,24 @@ const wetlabData: NodeDefinition = {
 const fieldData: NodeDefinition = {
   id: 'Field Data',
   classification: 'entity',
-  //labelFormatString: "D${version}${study ? ' (' + study.source  + ')' : ''}",
+  //labelFormatString: "FD${version}${study ? ' (' + study.source  + ')' : ''}",
   labelFormatString: 'FD${version}',
   informationFields: [
     'Reference',
     'TRACE Tag',
     'Type,Survey,Experiment,Other',
+    'Description'
+  ],
+};
+
+const publication: NodeDefinition = {
+  id: 'Publication',
+  classification: 'entity',
+  //labelFormatString: "P${version}${study ? ' (' + study.source  + ')' : ''}",
+  labelFormatString: 'P${version}',
+  informationFields: [
+    'Reference',
+    'TRACE Tag',
     'Description'
   ],
 };
@@ -312,6 +324,13 @@ export const rules: RelationshipRule[] = [
     target: fieldData.id,
   },
   {
+    id: 'building-activity-used-publication',
+    type: ['Used'],
+    cardinality: 'one-to-many',
+    source: buildingActivity.id,
+    target: publication.id,
+  },
+  {
     id: 'calibrating-activity-used-simulation-model',
     type: ['Used'],
     cardinality: 'one-to-many',
@@ -476,4 +495,5 @@ export const definitions: NodeDefinition[] = [
   validatingActivity,
   analyzingActivity,
   visualizingActivity,
+  publication
 ];

@@ -1287,6 +1287,7 @@ export default createComponent({
       // addNodeType(definitions.value[12].id); // Validating Simulation Model
       // addNodeType(definitions.value[13].id); // Analyzing Simulation Model
       // addNodeType(definitions.value[14].id); // Visualizing Simulation Result
+      // addNodeType(definitions.value[15].id); // Publication
 
     async function addCreatingPattern() {
       // Activity
