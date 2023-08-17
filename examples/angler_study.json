@@ -17,679 +17,477 @@
             "label": "E.utility",
             "id": "A572569052",
             "definitionId": "Simulation Experiment"
-        },
-        {
+          },
+          {
             "studyId": "A819543672",
             "id": "A679845478",
             "label": "D.utility",
             "definitionId": "Simulation Data"
-        },
-        {
+          },
+          {
             "studyId": "A507083489",
             "id": "A323072333",
             "label": "b.NL.ban",
             "definitionId": "Building Simulation Model"
-        },
-        {
+          },
+          {
             "studyId": "A507083489",
             "id": "A816514444",
             "label": "b.NL.EEI",
             "definitionId": "Building Simulation Model"
-        },
-        {
+          },
+          {
             "studyId": "A507083489",
             "id": "A636972955",
             "label": "b.NL.Ero",
             "definitionId": "Building Simulation Model"
-        },
-        {
+          },
+          {
             "studyId": "A507083489",
             "label": "NL Bandit",
             "id": "A132949712",
             "definitionId": "Simulation Model"
-        },
-        {
+          },
+          {
             "studyId": "A507083489",
             "label": "NL EEI",
             "id": "A484849745",
             "definitionId": "Simulation Model"
-        },
-        {
+          },
+          {
             "studyId": "A507083489",
             "label": "NL Erotetic",
             "id": "A826427237",
             "definitionId": "Simulation Model"
-        },
-        {
+          },
+          {
             "studyId": "A507083489",
             "id": "A032526647",
             "label": "a.Bandit",
             "definitionId": "Analyzing Simulation Model"
-        },
-        {
+          },
+          {
             "studyId": "A507083489",
             "id": "A032895272",
             "label": "E.Bandit",
             "definitionId": "Simulation Experiment"
-        },
-        {
+          },
+          {
             "studyId": "A507083489",
             "id": "A996355621",
             "label": "D.Bandit",
             "definitionId": "Simulation Data"
-        },
-        {
+          },
+          {
             "studyId": "A507083489",
             "id": "A889806588",
             "label": "a.EEI",
             "definitionId": "Analyzing Simulation Model"
-        },
-        {
+          },
+          {
             "studyId": "A507083489",
             "label": "E.EEI",
             "id": "A462081112",
             "definitionId": "Simulation Experiment"
-        },
-        {
+          },
+          {
             "studyId": "A507083489",
             "label": "D.EEI",
             "id": "A014233486",
             "definitionId": "Simulation Data"
-        },
-        {
+          },
+          {
             "studyId": "A507083489",
             "label": "a.Erotetic",
             "id": "A220029747",
             "definitionId": "Analyzing Simulation Model"
-        },
-        {
+          },
+          {
             "studyId": "A507083489",
             "label": "E.Erotetic",
             "id": "A739416458",
             "definitionId": "Simulation Experiment"
-        },
-        {
+          },
+          {
             "studyId": "A507083489",
             "id": "A132528808",
             "label": "D.Erotetic",
             "definitionId": "Simulation Data"
-        },
-        {
+          },
+          {
             "studyId": "A507083489",
             "label": "b.NL.Pro",
             "id": "A113680597",
             "definitionId": "Building Simulation Model"
-        },
-        {
+          },
+          {
             "studyId": "A507083489",
             "label": "NL Prospect",
             "id": "A608903174",
             "definitionId": "Simulation Model"
-        },
-        {
+          },
+          {
             "studyId": "A507083489",
             "id": "A516730174",
             "label": "a.Prospect",
             "definitionId": "Analyzing Simulation Model"
-        },
-        {
+          },
+          {
             "studyId": "A507083489",
             "id": "A807873525",
             "label": "E.Prospect",
             "definitionId": "Simulation Experiment"
-        },
-        {
+          },
+          {
             "studyId": "A507083489",
             "id": "A915528352",
             "label": "D.Prospect",
             "definitionId": "Simulation Data"
-        },
-        {
+          },
+          {
             "studyId": "A507083489",
             "label": "b.EEI1",
             "id": "A761074162",
             "definitionId": "Building Simulation Model"
-        },
-        {
+          },
+          {
             "studyId": "A507083489",
             "label": "b.EEI2",
             "id": "A284735978",
             "definitionId": "Building Simulation Model"
-        },
-        {
+          },
+          {
             "studyId": "A507083489",
             "label": "NL EEI asy fix",
             "id": "A213198283",
             "definitionId": "Simulation Model"
-        },
-        {
+          },
+          {
             "studyId": "A507083489",
             "label": "NL EEI asy rnd",
             "id": "A443966904",
             "definitionId": "Simulation Model"
-        },
-        {
+          },
+          {
             "studyId": "A507083489",
             "label": "a.EEI1",
             "id": "A884376136",
             "definitionId": "Analyzing Simulation Model"
-        },
-        {
+          },
+          {
             "studyId": "A507083489",
             "id": "A852771933",
             "label": "a.EEI2",
             "definitionId": "Analyzing Simulation Model"
-        },
-        {
+          },
+          {
             "studyId": "A507083489",
             "label": "E.EEI1",
             "id": "A784324326",
             "definitionId": "Simulation Experiment"
-        },
-        {
+          },
+          {
             "studyId": "A507083489",
             "id": "A818450081",
             "label": "D.EEI1",
             "definitionId": "Simulation Data"
-        },
-        {
+          },
+          {
             "studyId": "A507083489",
             "label": "D.EEI2",
             "id": "A846410224",
             "definitionId": "Simulation Data"
-        },
-        {
+          },
+          {
             "studyId": "A507083489",
             "label": "E.EEI2",
             "id": "A944533289",
             "definitionId": "Simulation Experiment"
-        },
-        {
+          },
+          {
             "studyId": "A819543672",
             "label": "b.NL.U",
             "id": "A580753356",
             "definitionId": "Building Simulation Model"
-        },
-        {
+          },
+          {
             "studyId": "A819543672",
             "label": "NetLogo Random",
             "id": "A570496650",
             "definitionId": "Simulation Model"
-        },
-        {
+          },
+          {
             "studyId": "A819543672",
             "label": "ML3 Utility",
             "id": "A771435552",
             "definitionId": "Simulation Model"
-        },
-        {
+          },
+          {
             "studyId": "A819543672",
             "label": "ML3 Random",
             "id": "A941890117",
             "definitionId": "Simulation Model"
-        },
-        {
+          },
+          {
             "studyId": "A819543672",
             "label": "b.ML3.R",
             "id": "A604947961",
             "definitionId": "Building Simulation Model"
-        },
-        {
+          },
+          {
             "studyId": "A819543672",
             "label": "b.ML3.U",
             "id": "A702253600",
             "definitionId": "Building Simulation Model"
-        },
-        {
+          },
+          {
             "studyId": "A819543672",
             "label": "b.NL.R",
             "id": "A780353557",
             "definitionId": "Building Simulation Model"
-        },
-        {
+          },
+          {
             "studyId": "A819543672",
             "label": "[1]",
             "id": "A257008122",
             "definitionId": "Publication"
-        },
-        {
+          },
+          {
             "studyId": "A819543672",
             "label": "[2]",
             "id": "A887598270",
             "definitionId": "Publication"
-        },
-        {
+          },
+          {
             "studyId": "A819543672",
             "label": "[3]",
             "id": "A019913610",
             "definitionId": "Field Data"
-        },
-        {
+          },
+          {
             "studyId": "A819543672",
             "label": "[4]",
             "id": "A210784427",
             "definitionId": "Field Data"
-        },
-        {
+          },
+          {
             "studyId": "A819543672",
             "label": "[5]",
             "id": "A724645945",
             "definitionId": "Field Data"
-        },
-        {
+          },
+          {
             "studyId": "A819543672",
             "label": "[6]",
             "id": "A452912443",
             "definitionId": "Field Data"
-        },
-        {
+          },
+          {
             "studyId": "A819543672",
             "label": "a.ML3.R",
             "id": "A704575359",
             "definitionId": "Analyzing Simulation Model"
-        },
-        {
+          },
+          {
             "studyId": "A819543672",
             "label": "a.NL.R",
             "id": "A277185206",
             "definitionId": "Analyzing Simulation Model"
-        },
-        {
+          },
+          {
             "studyId": "A819543672",
             "label": "a.ML3.U",
             "id": "A078273991",
             "definitionId": "Analyzing Simulation Model"
-        },
-        {
+          },
+          {
             "studyId": "A819543672",
             "id": "A064527264",
             "label": "E.ML3.R",
             "definitionId": "Simulation Experiment"
-        },
-        {
+          },
+          {
             "studyId": "A819543672",
             "id": "A361467966",
             "label": "D.ML3.R",
             "definitionId": "Simulation Data"
-        },
-        {
+          },
+          {
             "studyId": "A819543672",
             "label": "E.NL.R",
             "id": "A736154680",
             "definitionId": "Simulation Experiment"
-        },
-        {
+          },
+          {
             "studyId": "A819543672",
             "label": "D.NL.R",
             "id": "A985829018",
             "definitionId": "Simulation Data"
-        },
-        {
+          },
+          {
             "studyId": "A819543672",
             "label": "E.ML3.U",
             "id": "A853360764",
             "definitionId": "Simulation Experiment"
-        },
-        {
+          },
+          {
             "studyId": "A819543672",
             "label": "D.ML3.U",
             "id": "A001588185",
             "definitionId": "Simulation Data"
-        },
-        {
+          },
+          {
             "id": "A214070419",
             "definitionId": "Building Simulation Model",
             "studyId": "A507083489",
             "label": "b.NL.Ban.v2"
-        },
-        {
+          },
+          {
             "id": "A891916782",
             "definitionId": "Simulation Model",
             "studyId": "A507083489",
             "label": "NL Bandit  v2"
-        },
-        {
+          },
+          {
             "id": "A251012168",
             "definitionId": "Analyzing Simulation Model",
             "studyId": "A507083489",
             "label": "a.Bandit.v2"
-        },
-        {
+          },
+          {
             "id": "A888480394",
             "definitionId": "Simulation Experiment",
             "studyId": "A507083489",
             "label": "E.Bandit.v2"
-        },
-        {
+          },
+          {
             "id": "A629641030",
             "definitionId": "Simulation Data",
             "studyId": "A507083489",
             "label": "D.Bandit.v2"
-        },
-        {
+          },
+          {
             "id": "A767182449",
             "definitionId": "Building Simulation Model",
             "studyId": "A507083489",
             "label": "b.NL.Pro.v2"
-        },
-        {
+          },
+          {
             "id": "A128870646",
             "definitionId": "Simulation Model",
             "studyId": "A507083489",
             "label": "NL Prospect v2"
-        },
-        {
+          },
+          {
             "id": "A278194361",
             "definitionId": "Analyzing Simulation Model",
             "studyId": "A507083489",
             "label": "a.Prospect.v2"
-        },
-        {
+          },
+          {
             "id": "A730399238",
             "definitionId": "Simulation Experiment",
             "studyId": "A507083489",
             "label": "E.Prospect.v2"
-        },
-        {
+          },
+          {
             "id": "A026607745",
             "definitionId": "Simulation Data",
             "studyId": "A507083489",
             "label": "D.Prospect.v2"
-        },
-        {
+          },
+          {
             "id": "A624473112",
             "definitionId": "Building Simulation Model",
             "studyId": "A507083489",
             "label": "b.NL.EEI.v2"
-        },
-        {
+          },
+          {
             "id": "A681647010",
             "definitionId": "Analyzing Simulation Model",
             "label": "a.EEI.v2"
-        },
-        {
+          },
+          {
             "id": "A738948812",
             "definitionId": "Simulation Data",
             "studyId": "A507083489",
             "label": "D.EEI.v2"
-        },
-        {
+          },
+          {
             "id": "A492630654",
             "definitionId": "Simulation Experiment",
             "label": "E.EEI.v2"
-        },
-        {
+          },
+          {
             "id": "A836144254",
             "definitionId": "Building Simulation Model",
             "studyId": "A507083489",
             "label": "b.EEI2.v2"
-        },
-        {
+          },
+          {
             "id": "A785927564",
             "definitionId": "Building Simulation Model",
             "studyId": "A507083489",
             "label": "b.EEI1.v2"
-        },
-        {
+          },
+          {
             "id": "A541587614",
             "definitionId": "Simulation Model",
             "studyId": "A507083489",
             "label": "NL EEI asy rnd v2"
-        },
-        {
+          },
+          {
             "id": "A213229719",
             "definitionId": "Simulation Model",
             "studyId": "A507083489",
             "label": "NL EEI asy fix v2"
-        },
-        {
+          },
+          {
             "id": "A896722823",
             "definitionId": "Analyzing Simulation Model",
             "studyId": "A507083489",
             "label": "a.EEI1.v2"
-        },
-        {
+          },
+          {
             "id": "A212505215",
             "definitionId": "Analyzing Simulation Model",
             "studyId": "A507083489",
             "label": "a.EEI2.v2"
-        },
-        {
+          },
+          {
             "id": "A556570970",
             "definitionId": "Simulation Experiment",
             "studyId": "A507083489",
             "label": "E.EEI2.v2"
-        },
-        {
+          },
+          {
             "id": "A261235036",
             "definitionId": "Simulation Experiment",
             "studyId": "A507083489",
             "label": "E.EEI1.v2"
-        },
-        {
+          },
+          {
             "id": "A009876050",
             "definitionId": "Simulation Data",
             "studyId": "A507083489",
             "label": "D.EEI2.v2"
-        },
-        {
+          },
+          {
             "id": "A434191730",
             "definitionId": "Simulation Data",
             "studyId": "A507083489",
             "label": "D.EEI1.v2"
-        },
-        {
+          },
+          {
             "id": "A059604879",
             "definitionId": "Simulation Model",
             "studyId": "A507083489",
             "label": "NL EEI v2"
-        }
+          }
     ],
     "informationFields": [
-        {
-            "id": "A142186901",
-            "key": "Type",
-            "value": "Survey"
-        },
-        {
-            "id": "A301762127",
-            "key": "Type",
-            "value": "Survey"
-        },
-        {
-            "id": "A156164298",
-            "key": "Type",
-            "value": "Survey"
-        },
-        {
-            "id": "A037626424",
-            "key": "Type",
-            "value": "Survey"
-        },
-        {
-            "id": "A534801359",
-            "key": "Type"
-        },
-        {
-            "id": "A375275188",
-            "key": "Reference",
-            "value": "https://git.informatik.uni-rostock.de/khaase/site-choice-in-recreational-fisheries-towards-an-agent-based-approach/-/blob/main/M_U.ml3"
-        },
-        {
-            "id": "A497096468",
-            "key": "Software",
-            "value": "ML3"
-        },
-        {
-            "id": "A767976028",
-            "key": "Type",
-            "value": "IBM"
-        },
-        {
-            "id": "A615461866",
-            "key": "Reference",
-            "value": "https://git.informatik.uni-rostock.de/khaase/site-choice-in-recreational-fisheries-towards-an-agent-based-approach/-/blob/main/M_R.ml3"
-        },
-        {
-            "id": "A876503598",
-            "key": "Reference",
-            "value": "https://git.informatik.uni-rostock.de/khaase/site-choice-in-recreational-fisheries-towards-an-agent-based-approach/-/blob/main/M_R_Experiment.scala"
-        },
-        {
-            "id": "A409844007",
-            "key": "Type"
-        },
-        {
-            "id": "A507952302",
-            "key": "Reference",
-            "value": "https://git.informatik.uni-rostock.de/khaase/site-choice-in-recreational-fisheries-towards-an-agent-based-approach/-/blob/main/M_U_Experiment.scala"
-        },
-        {
-            "id": "A489041839",
-            "key": "Software",
-            "value": "SESSL"
-        },
-        {
-            "id": "A173929095",
-            "key": "Software",
-            "value": "SESSL"
-        },
-        {
-            "id": "A109828951",
-            "key": "Software",
-            "value": "ML3"
-        },
-        {
-            "id": "A676526028",
-            "key": "Software",
-            "value": "NetLogo 6.3.0"
-        },
-        {
-            "id": "A973221446",
-            "key": "Software",
-            "value": "NetLogo 6.3.0"
-        }
     ],
-    "informationRelationships": [
-        {
-            "source": "A210784427",
-            "target": "A142186901",
-            "properties": {
-                "id": "A259712503"
-            }
-        },
-        {
-            "source": "A019913610",
-            "target": "A301762127",
-            "properties": {
-                "id": "A393015140"
-            }
-        },
-        {
-            "source": "A724645945",
-            "target": "A156164298",
-            "properties": {
-                "id": "A118625530"
-            }
-        },
-        {
-            "source": "A452912443",
-            "target": "A037626424",
-            "properties": {
-                "id": "A863005917"
-            }
-        },
-        {
-            "source": "A752408695",
-            "target": "A534801359",
-            "properties": {
-                "id": "A022986135"
-            }
-        },
-        {
-            "source": "A771435552",
-            "target": "A375275188",
-            "properties": {
-                "id": "A415799189"
-            }
-        },
-        {
-            "source": "A771435552",
-            "target": "A497096468",
-            "properties": {
-                "id": "A669946303"
-            }
-        },
-        {
-            "source": "A771435552",
-            "target": "A767976028",
-            "properties": {
-                "id": "A023293635"
-            }
-        },
-        {
-            "source": "A941890117",
-            "target": "A615461866",
-            "properties": {
-                "id": "A642680388"
-            }
-        },
-        {
-            "source": "A064527264",
-            "target": "A876503598",
-            "properties": {
-                "id": "A135990900"
-            }
-        },
-        {
-            "source": "A853360764",
-            "target": "A409844007",
-            "properties": {
-                "id": "A641472298"
-            }
-        },
-        {
-            "source": "A853360764",
-            "target": "A507952302",
-            "properties": {
-                "id": "A226493966"
-            }
-        },
-        {
-            "source": "A853360764",
-            "target": "A489041839",
-            "properties": {
-                "id": "A352782290"
-            }
-        },
-        {
-            "source": "A064527264",
-            "target": "A173929095",
-            "properties": {
-                "id": "A294568188"
-            }
-        },
-        {
-            "source": "A941890117",
-            "target": "A109828951",
-            "properties": {
-                "id": "A760162677"
-            }
-        },
-        {
-            "source": "A570496650",
-            "target": "A676526028",
-            "properties": {
-                "id": "A560007245"
-            }
-        },
-        {
-            "source": "A752408695",
-            "target": "A973221446",
-            "properties": {
-                "id": "A171736875"
-            }
-        }
+    "informationRelationships": [ 
     ],
     "dependencyRelationships": [
         {
